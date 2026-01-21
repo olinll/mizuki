@@ -8,10 +8,14 @@ tags: []
 category: ''
 draft: false
 pinned: false
-image: 
+image: ''
 ---
 
 本篇文章长期更新，且实时记录本站所有魔改框架记录。不包含文章页面的更新
+
+::github{repo="olinll/mizuki"}
+
+提交记录：[Commits](https://github.com/olinll/mizuki/commits/main/)
 
 # Initial commit Mizuki v8.0 f767544
 
@@ -61,3 +65,11 @@ feat(assets): 添加新的日文字体文件
 commit：[70f2f49](https://github.com/olinll/mizuki/commit/70f2f49af6051c552c502bc157ccd58a820595e5)
 
 迁移原有mizuki文档教程到posts-mizuki备用
+
+# fix(i18n): 修正中文翻译"关于我们"为"关于"
+
+时间：2026-01-21
+
+commit：[a0b5417](https://github.com/olinll/mizuki/commit/a0b541723a311f56dadb7ee6c0bcb233b31fdae3)
+
+fix(i18n): 修正中文翻译"关于我们"为"关于"refactor(config): 恢复tailwind断点默认值并调整侧边栏布局断点 调整移动端、平板端和桌面端的断点值为1024px，保持响应式设计一致性 feat(analytics): 启用Umami统计功能
