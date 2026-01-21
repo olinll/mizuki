@@ -1,4 +1,4 @@
-name: Fuwari-yCENzh CI
+name: Fuwari-v8.0 CI
 
 on:
     push:
