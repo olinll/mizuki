@@ -79,3 +79,16 @@ fix(i18n): 修正中文翻译"关于我们"为"关于"refactor(config): 恢复ta
 时间：2026-01-21
 
 commit：[b21dc9e](https://github.com/olinll/mizuki/commit/b21dc9e2e9cbdcf6c9a6c3256e6fe11e5ad408ba)
+
+
+# feat(Footer): 添加ICP备案信息和构建版本显示
+时间：2026-01-21
+commit：[6da0ff1](https://github.com/olinll/mizuki/commit/6da0ff1fa58974678dae3debe6468bbff74e0bca)
+feat(Footer): 添加ICP备案信息和构建版本显示
+
+在页脚组件中添加ICP备案图标和链接，并显示当前构建的commit hash和日期 同时调整了页面的布局样式和链接内容
+
+# Update Footer.astro
+
+时间：2026-01-21  
+commit：[9700b9a](https://github.com/olinll/mizuki/commit/9700b9a38e9d9dbb9e01873b7d0d12aa9b5f75ba)
