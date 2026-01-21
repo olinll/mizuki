@@ -477,6 +477,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 	// 侧边栏组件配置列表
 	components: [
+		// 组件类型：用户资料组件
 		{
 			// 组件类型：用户资料组件
 			type: "profile",
@@ -493,6 +494,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 动画延迟时间（毫秒），用于错开动画效果
 			animationDelay: 0,
 		},
+		// 组件类型：公告组件
 		{
 			// 组件类型：公告组件
 			type: "announcement",
@@ -509,27 +511,41 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 动画延迟时间
 			animationDelay: 50,
 		},
+		// 组件类型：日历组件(移动端不显示)
 		{
-			// 组件类型：分类组件
-			type: "categories",
+			// 组件类型：日历组件(移动端不显示)
+			type: "calendar",
+			// 是否启用该组件
+			enable: true,
+			// 组件显示顺序
+			order: 3,
+			// 组件位置
+			position: "top",
+			// 所在侧边栏
+			sidebar: "right",
+			// CSS 类名
+			class: "onload-animation",
+			// 动画延迟时间
+			animationDelay: 250,
+		},
+		// 组件类型：站点统计组件
+		{
+			// 组件类型：站点统计组件
+			type: "site-stats",
 			// 是否启用该组件
 			enable: true,
 			// 组件显示顺序
 			order: 4,
-			// 组件位置："sticky" 表示粘性定位，可滚动
-			position: "sticky",
+			// 组件位置
+			position: "top",
 			// 所在侧边栏
-			sidebar: "left",
+			sidebar: "right",
 			// CSS 类名
 			class: "onload-animation",
 			// 动画延迟时间
-			animationDelay: 150,
-			// 响应式配置
-			responsive: {
-				// 折叠阈值：当分类数量超过5个时自动折叠
-				collapseThreshold: 5,
-			},
+			animationDelay: 200,
 		},
+		// 组件类型：标签组件
 		{
 			// 组件类型：标签组件
 			type: "tags",
@@ -551,37 +567,27 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 				collapseThreshold: 20,
 			},
 		},
+		// 组件类型：分类组件
 		{
-			// 组件类型：站点统计组件
-			type: "site-stats",
+			// 组件类型：分类组件
+			type: "categories",
 			// 是否启用该组件
-			enable: true,
+			enable: false,
 			// 组件显示顺序
-			order: 3,
-			// 组件位置
+			order: 6,
+			// 组件位置："sticky" 表示粘性定位，可滚动
 			position: "top",
 			// 所在侧边栏
-			sidebar: "right",
+			sidebar: "left",
 			// CSS 类名
 			class: "onload-animation",
 			// 动画延迟时间
-			animationDelay: 200,
-		},
-		{
-			// 组件类型：日历组件(移动端不显示)
-			type: "calendar",
-			// 是否启用该组件
-			enable: true,
-			// 组件显示顺序
-			order: 2,
-			// 组件位置
-			position: "top",
-			// 所在侧边栏
-			sidebar: "right",
-			// CSS 类名
-			class: "onload-animation",
-			// 动画延迟时间
-			animationDelay: 250,
+			animationDelay: 150,
+			// 响应式配置
+			responsive: {
+				// 折叠阈值：当分类数量超过5个时自动折叠
+				collapseThreshold: 5,
+			},
 		},
 	],
 
