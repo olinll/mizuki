@@ -2,8 +2,8 @@
 title: Mizuki 魔改日志
 description: 记录Mizuki魔改的日志，方便版本升级时翻阅
 
-published: 2026-01-01
-date: 2026-01-01
+published: 1999-01-01
+date: 2026-01-21
 tags: []
 category: ''
 draft: false
