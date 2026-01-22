@@ -1,5 +1,5 @@
 ---
-title: 服务崩了？不知道啥时候崩的？Uptime Kuma监控服务运行状态
+title: 利用Uptime Kuma监控服务运行状态
 published: 2025-12-28
 pinned: false
 description: 本文将介绍如何通过 Docker Compose 快速部署 Uptime Kuma，让你能够轻松搭建自己的监控系统

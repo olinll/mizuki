@@ -1,5 +1,5 @@
 ---
-title: 告别臃肿：Alpine 最小化安装与生产级配置手册
+title: 告别臃肿：Alpine 最小化安装与配置手册
 description: 选择一个牛逼的系统，将你VPC的费用压缩到极致！
 published: 2026-01-17
 date: 2026-01-17

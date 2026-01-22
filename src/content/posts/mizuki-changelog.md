@@ -88,7 +88,33 @@ feat(Footer): 添加ICP备案信息和构建版本显示
 
 在页脚组件中添加ICP备案图标和链接，并显示当前构建的commit hash和日期 同时调整了页面的布局样式和链接内容
 
-# Update Footer.astro
+# perf(transition): 优化页面切换和动画延迟时间
+时间：2026-01-22
+commit：[7132e54](https://github.com/olinll/mizuki/commit/7132e546b35a88823427c6b4e528646c42465f79)
+perf(transition): 优化页面切换和动画延迟时间
 
-时间：2026-01-21  
-commit：[9700b9a](https://github.com/olinll/mizuki/commit/9700b9a38e9d9dbb9e01873b7d0d12aa9b5f75ba)
+减少页面切换相关操作的延迟时间，从50-300ms降低到20-150ms 缩短CSS动画持续时间，提升页面响应速度
+
+# refactor(umami): 优化缓存机制并添加脚本属性
+时间：2026-01-22
+commit：[b81e171](https://github.com/olinll/mizuki/commit/b81e1711a149c341a25781317b7396d1b3c68860)
+refactor(umami): 优化缓存机制并添加脚本属性
+
+将本地存储缓存改为内存缓存以适配单页应用场景 为umami脚本添加id和数据持久化属性
+
+# feat(Profile): 用户卡片 添加全站文章统计和字数统计功能
+时间：2026-01-22
+commit：[aed5451](https://github.com/olinll/mizuki/commit/aed5451d086431e9a6e4bd7fa9c823c5160daa58)
+
+feat(Profile): 用户卡片 添加全站文章统计和字数统计功能
+
+新增文章总数和总字数统计展示，包括： 1. 计算并显示博客文章总数 2. 实现精确的字数统计逻辑（区分CJK和非CJK字符） 3. 添加动画效果的数字增长展示 4. 优化统计信息的UI布局
+
+# feat(文章组件): 优化文章卡片和元数据显示
+时间：2026-01-22
+commit：[849f8ec](https://github.com/olinll/mizuki/commit/849f8ec7fde734cc7bd470c8112ab2a69f740e89)
+
+feat(文章组件): 优化文章卡片和元数据显示
+
+添加文章描述显示功能并重构文章卡片布局 新增文章访问量和访客统计显示 调整元数据组件支持简洁模式
+

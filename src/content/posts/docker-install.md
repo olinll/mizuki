@@ -1,5 +1,5 @@
 ---
-title: Docker 安装与卸载：最佳实践与常见问题解决
+title: Docker 安装与卸载
 description: Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
 published: 2026-01-17
 date: 2026-01-17
