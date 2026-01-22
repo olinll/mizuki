@@ -328,7 +328,7 @@ function setupSwupHooks() {
 			codeBlockCollapser.processedBlocks = new WeakSet();
 			setTimeout(() => {
 				codeBlockCollapser.setupCodeBlocks();
-			}, 100);
+			}, 50);
 		});
 
 		// 监听 content:replace 事件（更早触发）
@@ -340,7 +340,7 @@ function setupSwupHooks() {
 			codeBlockCollapser.processedBlocks = new WeakSet();
 			setTimeout(() => {
 				codeBlockCollapser.setupCodeBlocks();
-			}, 50);
+			}, 20);
 		});
 
 		return true;

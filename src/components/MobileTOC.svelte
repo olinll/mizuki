@@ -225,7 +225,7 @@ const setupSwupListeners = () => {
 			// 延迟执行，确保页面已完全加载
 			setTimeout(() => {
 				init();
-			}, 200);
+			}, 50);
 		});
 
 		swupListenersRegistered = true;
@@ -233,7 +233,7 @@ const setupSwupListeners = () => {
 	} else if (!swupListenersRegistered) {
 		// 降级处理：监听普通页面切换事件
 		window.addEventListener("popstate", () => {
-			setTimeout(init, 200);
+			setTimeout(init, 50);
 		});
 		swupListenersRegistered = true;
 		console.log("MobileTOC fallback listener registered");

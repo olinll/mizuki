@@ -114,7 +114,7 @@
 	window.addEventListener("pageshow", (event) => {
 		if (event.persisted) {
 			cleanupBoundElements();
-			setTimeout(initTimelineScroll, 100);
+			setTimeout(initTimelineScroll, 50);
 		}
 	});
 
@@ -129,25 +129,25 @@
 		document.addEventListener("swup:contentReplaced", () => {
 			cleanupBoundElements();
 			// 延迟初始化以确保DOM完全更新
-			setTimeout(initTimelineScroll, 50);
+			setTimeout(initTimelineScroll, 20);
 		});
 
 		// 监听 SWUP 页面视图事件
 		document.addEventListener("swup:pageView", () => {
 			cleanupBoundElements();
-			setTimeout(initTimelineScroll, 100);
+			setTimeout(initTimelineScroll, 50);
 		});
 	}
 
 	// 增强对 Astro 导航的支持
 	document.addEventListener("astro:page-load", () => {
 		cleanupBoundElements();
-		setTimeout(initTimelineScroll, 100);
+		setTimeout(initTimelineScroll, 50);
 	});
 
 	document.addEventListener("astro:after-swap", () => {
 		cleanupBoundElements();
-		setTimeout(initTimelineScroll, 100);
+		setTimeout(initTimelineScroll, 50);
 	});
 
 	// 暴露初始化函数到全局作用域，供其他脚本调用

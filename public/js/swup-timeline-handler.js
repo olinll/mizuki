@@ -39,28 +39,28 @@
 		// 监听内容替换事件
 		document.addEventListener("swup:contentReplaced", () => {
 			// 延迟执行以确保 DOM 完全更新
-			setTimeout(initTimelineFeatures, 100);
+			setTimeout(initTimelineFeatures, 50);
 		});
 
 		// 监听页面视图事件
 		document.addEventListener("swup:pageView", () => {
-			setTimeout(initTimelineFeatures, 100);
+			setTimeout(initTimelineFeatures, 50);
 		});
 	}
 
 	// 监听 Astro 导航事件
 	document.addEventListener("astro:page-load", () => {
-		setTimeout(initTimelineFeatures, 100);
+		setTimeout(initTimelineFeatures, 50);
 	});
 
 	document.addEventListener("astro:after-swap", () => {
-		setTimeout(initTimelineFeatures, 100);
+		setTimeout(initTimelineFeatures, 50);
 	});
 
 	// 监听浏览器前进/后退事件
 	window.addEventListener("pageshow", (event) => {
 		if (event.persisted) {
-			setTimeout(initTimelineFeatures, 100);
+			setTimeout(initTimelineFeatures, 50);
 		}
 	});
 })();

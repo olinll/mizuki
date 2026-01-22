@@ -158,11 +158,11 @@
 	// 如果使用 SWUP，监听其事件
 	if (typeof window.Swup !== "undefined") {
 		document.addEventListener("swup:contentReplaced", () => {
-			setTimeout(globalInit, 100);
+			setTimeout(globalInit, 50);
 		});
 
 		document.addEventListener("swup:pageView", () => {
-			setTimeout(globalInit, 100);
+			setTimeout(globalInit, 50);
 		});
 
 		document.addEventListener("swup:transitionStart", () => {
@@ -172,11 +172,11 @@
 
 	// 监听 Astro 导航事件
 	document.addEventListener("astro:page-load", () => {
-		setTimeout(globalInit, 100);
+		setTimeout(globalInit, 50);
 	});
 
 	document.addEventListener("astro:after-swap", () => {
-		setTimeout(globalInit, 100);
+		setTimeout(globalInit, 50);
 	});
 
 	// 暴露全局函数

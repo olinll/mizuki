@@ -75,7 +75,7 @@ class ThemeOptimizer {
 						this.applyCodeBlockTransitionBehavior();
 						// 确保主题切换样式正确应用
 						this.forceApplyThemeTransitionStyles();
-					}, 100);
+					}, 50);
 				});
 
 				// 监听 content:replace 事件（更早触发）
@@ -85,7 +85,7 @@ class ThemeOptimizer {
 						this.applyCodeBlockTransitionBehavior();
 						// 确保主题切换样式正确应用
 						this.forceApplyThemeTransitionStyles();
-					}, 50);
+					}, 20);
 				});
 
 				return true;

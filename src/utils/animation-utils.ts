@@ -52,7 +52,7 @@ export class AnimationManager {
 			swup.hooks.on("content:replace", () => {
 				setTimeout(() => {
 					this.initializePageAnimations();
-				}, 50);
+				}, 20);
 			});
 		}
 	}

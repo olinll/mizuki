@@ -902,10 +902,10 @@ const hiddenAnimeList = animeList.slice(INITIAL_DISPLAY_COUNT);
 		function setupSwupListeners() {
 			if (window.swup) {
 				window.swup.hooks.on("content:replace", () =>
-					setTimeout(initFilterButtons, 150),
+					setTimeout(initFilterButtons, 50),
 				);
 				window.swup.hooks.on("page:view", () =>
-					setTimeout(initFilterButtons, 150),
+					setTimeout(initFilterButtons, 50),
 				);
 			}
 		}

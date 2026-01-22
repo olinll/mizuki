@@ -59,13 +59,13 @@ const config = {
   // Swup 页面切换后重新初始化
   if (window.swup && window.swup.hooks) {
     window.swup.hooks.on('content:replace', function() {
-      setTimeout(initTwikoo, 200);
+      setTimeout(initTwikoo, 50);
     });
   } else {
     document.addEventListener('swup:enable', function() {
       if (window.swup && window.swup.hooks) {
         window.swup.hooks.on('content:replace', function() {
-          setTimeout(initTwikoo, 200);
+          setTimeout(initTwikoo, 50);
         });
       }
     });
