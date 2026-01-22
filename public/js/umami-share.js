@@ -1,6 +1,11 @@
 ((global) => {
-	const cacheKey = "umami-share-cache";
-	const cacheTTL = 3600_000; // 1h
+	// 初始化全局内存缓存
+	// 使用内存缓存(Map)而不是 sessionStorage/localStorage
+	// 这样在页面刷新(F5)时缓存会自动清空，符合"只有刷新的时候才再次获取"的需求
+	// 而在 swup 单页跳转时，window 对象保留，缓存依然有效
+	if (!global.__umamiDataCache) {
+		global.__umamiDataCache = new Map();
+	}
 
 	/**
 	 * 获取网站统计数据
@@ -10,20 +15,16 @@
 	 * @returns {Promise<object>} 网站统计数据
 	 */
 	async function fetchWebsiteStats(baseUrl, apiKey, websiteId) {
-		// 检查缓存
-		const cached = localStorage.getItem(cacheKey);
-		if (cached) {
-			try {
-				const parsed = JSON.parse(cached);
-				if (Date.now() - parsed.timestamp < cacheTTL) {
-					return parsed.value;
-				}
-			} catch {
-				localStorage.removeItem(cacheKey);
-			}
+		const currentTimestamp = Date.now();
+		// 缓存键：site-{websiteId}
+		// 注意：这里没有包含 timestamp，意味着只要不刷新，就一直用第一次加载的数据
+		// 如果需要定期更新，可以在 value 里存 timestamp 并检查 TTL
+		const cacheKey = `site-${websiteId}`;
+
+		if (global.__umamiDataCache.has(cacheKey)) {
+			return global.__umamiDataCache.get(cacheKey);
 		}
 
-		const currentTimestamp = Date.now();
 		const statsUrl = `${baseUrl}/v1/websites/${websiteId}/stats?startAt=0&endAt=${currentTimestamp}`;
 
 		const res = await fetch(statsUrl, {
@@ -38,11 +39,8 @@
 
 		const stats = await res.json();
 
-		// 缓存结果
-		localStorage.setItem(
-			cacheKey,
-			JSON.stringify({ timestamp: Date.now(), value: stats }),
-		);
+		// 写入内存缓存
+		global.__umamiDataCache.set(cacheKey, stats);
 
 		return stats;
 	}
@@ -65,6 +63,14 @@
 		startAt = 0,
 		endAt = Date.now(),
 	) {
+		// 只有查询全时段数据（startAt=0）时才使用缓存
+		const shouldCache = startAt === 0;
+		const cacheKey = `page-${websiteId}-${urlPath}`;
+
+		if (shouldCache && global.__umamiDataCache.has(cacheKey)) {
+			return global.__umamiDataCache.get(cacheKey);
+		}
+
 		const statsUrl = `${baseUrl}/v1/websites/${websiteId}/stats?startAt=${startAt}&endAt=${endAt}&path=${encodeURIComponent(urlPath)}`;
 
 		const res = await fetch(statsUrl, {
@@ -77,7 +83,13 @@
 			throw new Error("获取页面统计数据失败");
 		}
 
-		return await res.json();
+		const stats = await res.json();
+
+		if (shouldCache) {
+			global.__umamiDataCache.set(cacheKey, stats);
+		}
+
+		return stats;
 	}
 
 	/**
@@ -128,6 +140,8 @@
 	};
 
 	global.clearUmamiShareCache = () => {
-		localStorage.removeItem(cacheKey);
+		if (global.__umamiDataCache) {
+			global.__umamiDataCache.clear();
+		}
 	};
 })(window);
