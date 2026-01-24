@@ -1,4 +1,71 @@
 ((global) => {
+	const cacheKey = "umami-token-cache";
+	const cacheTTL = 3600_000; // 1h
+
+
+
+
+	async function fetchShareData(baseUrl, apiKey) {
+		const cached = localStorage.getItem(cacheKey);
+		if (cached) {
+			try {
+				const parsed = JSON.parse(cached);
+				if (Date.now() - parsed.timestamp < cacheTTL) {
+					return parsed.value;
+				}
+			} catch {
+				localStorage.removeItem(cacheKey);
+			}
+		}
+		const res = await fetch(`${baseUrl}/api/auth/login`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: "admin",
+				password: apiKey,
+			}),
+		});
+		if (!res.ok) {
+			throw new Error("获取 Umami 分享信息失败");
+		}
+		const data = await res.json();
+		localStorage.setItem(
+			cacheKey,
+			JSON.stringify({ timestamp: Date.now(), value: data.token }),
+		);
+		return data.token;
+	}
+
+	/**
+	 * 获取 Umami 分享数据（websiteId、token）
+	 * 在缓存 TTL 内复用；并用全局 Promise 避免并发请求
+	 * @param {string} baseUrl
+	 * @param {string} apiKey
+	 * @returns {Promise<{websiteId: string, token: string}>}
+	 */
+	global.getUmamiShareData = (baseUrl, apiKey) => {
+		if (!global.__umamiSharePromise) {
+			global.__umamiSharePromise = fetchShareData(baseUrl, apiKey).catch(
+				(err) => {
+					delete global.__umamiSharePromise;
+					throw err;
+				},
+			);
+		}
+		return global.__umamiSharePromise;
+	};
+
+	global.clearUmamiShareCache = () => {
+		localStorage.removeItem(cacheKey);
+		delete global.__umamiSharePromise;
+		if (global.__umamiDataCache) {
+			global.__umamiDataCache.clear();
+		}
+	};
+
+
 	// 初始化全局内存缓存
 	// 使用内存缓存(Map)而不是 sessionStorage/localStorage
 	// 这样在页面刷新(F5)时缓存会自动清空，符合"只有刷新的时候才再次获取"的需求
@@ -25,13 +92,35 @@
 			return global.__umamiDataCache.get(cacheKey);
 		}
 
-		const statsUrl = `${baseUrl}/v1/websites/${websiteId}/stats?startAt=0&endAt=${currentTimestamp}`;
+		let res;
 
-		const res = await fetch(statsUrl, {
+		//判断是否为官方网站
+		if(baseUrl==='https://api.umami.is'){
+			const statsUrl = `${baseUrl}/v1/websites/${websiteId}/stats?startAt=0&endAt=${currentTimestamp}`;
+
+			res = await fetch(statsUrl, {
+				headers: {
+					"x-umami-api-key": apiKey,
+				},
+			});
+		}else{
+
+		const token = await global.getUmamiShareData(
+				baseUrl,
+				apiKey,
+			);
+		const statsUrl = `${baseUrl}/api/websites/${websiteId}/stats?startAt=0&endAt=${currentTimestamp}`;
+
+		res = await fetch(statsUrl, {
 			headers: {
-				"x-umami-api-key": apiKey,
+				// "x-umami-api-key": apiKey,
+				"Authorization": "Bearer "+token,
 			},
 		});
+		}
+
+
+		
 
 		if (!res.ok) {
 			throw new Error("获取网站统计数据失败");
@@ -71,13 +160,41 @@
 			return global.__umamiDataCache.get(cacheKey);
 		}
 
+		
+		let res;
+
+		if(baseUrl==='https://api.umami.is'){
+
 		const statsUrl = `${baseUrl}/v1/websites/${websiteId}/stats?startAt=${startAt}&endAt=${endAt}&path=${encodeURIComponent(urlPath)}`;
 
-		const res = await fetch(statsUrl, {
+		res = await fetch(statsUrl, {
 			headers: {
 				"x-umami-api-key": apiKey,
 			},
 		});
+
+
+		}else{
+		const token = await global.getUmamiShareData(
+			baseUrl,
+			apiKey,
+		);
+		const statsUrl = `${baseUrl}/api/websites/${websiteId}/stats?startAt=${startAt}&endAt=${endAt}&path=${encodeURIComponent(urlPath)}`;
+
+		res = await fetch(statsUrl, {
+			headers: {
+				// "x-umami-api-key": apiKey,
+				"Authorization": "Bearer "+token,
+			},
+		});
+
+
+		}
+
+
+
+
+		
 
 		if (!res.ok) {
 			throw new Error("获取页面统计数据失败");
@@ -139,9 +256,5 @@
 		}
 	};
 
-	global.clearUmamiShareCache = () => {
-		if (global.__umamiDataCache) {
-			global.__umamiDataCache.clear();
-		}
-	};
+
 })(window);
