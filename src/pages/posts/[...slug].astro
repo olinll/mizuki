@@ -28,6 +28,7 @@ import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
 import Encryptor from "../../components/Encryptor.astro";
+import { getPostCover } from "@utils/cover-utils";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
@@ -96,14 +97,16 @@ const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 const { remarkPluginFrontmatter } = await render(entry);
 
+const coverImage = getPostCover(entry.data.image, entry.id);
+
 // Process cover image for SharePoster
-let posterCoverUrl = entry.data.image;
-if (entry.data.image) {
+let posterCoverUrl = coverImage;
+if (coverImage) {
 	const isLocal = !(
-		entry.data.image.startsWith("/") ||
-		entry.data.image.startsWith("http") ||
-		entry.data.image.startsWith("https") ||
-		entry.data.image.startsWith("data:")
+		coverImage.startsWith("/") ||
+		coverImage.startsWith("http") ||
+		coverImage.startsWith("https") ||
+		coverImage.startsWith("data:")
 	);
 	if (isLocal) {
 		const basePath = getFileDirFromPath(entry.filePath || "");
@@ -111,7 +114,7 @@ if (entry.data.image) {
 			import: "default",
 		});
 		let normalizedPath = path
-			.normalize(path.join("../../", basePath, entry.data.image))
+			.normalize(path.join("../../", basePath, coverImage))
 			.replace(/\\/g, "/");
 		const file = files[normalizedPath];
 		if (file) {
@@ -173,7 +176,7 @@ const jsonLd = {
 ---
 
 <MainGridLayout
-    banner={entry.data.image}
+    banner={coverImage}
     title={entry.data.title}
     description={entry.data.description}
     lang={entry.data.lang}
@@ -267,7 +270,7 @@ const jsonLd = {
                     </div>
                 )}
                 {
-                    (!entry.data.image|| (entry.data.image && !siteConfig.showCoverInContent)) && (
+                    (!coverImage|| (coverImage && !siteConfig.showCoverInContent)) && (
                         <div class="mt-4 border-[var(--line-divider)] border-dashed border-b-[1px] mb-5" />
                     )
                 }
@@ -276,12 +279,12 @@ const jsonLd = {
             <!-- always show cover as long as it has one -->
 
             {
-                entry.data.image && siteConfig.showCoverInContent && (
+                coverImage && siteConfig.showCoverInContent && (
                     <>
                         <div class="mt-4" />
                         <ImageWrapper
                             id="post-cover"
-                            src={entry.data.image}
+                            src={coverImage}
                             basePath={getFileDirFromPath(entry.filePath || '')}
                             class="mb-8 rounded-xl banner-container onload-animation"
                         />

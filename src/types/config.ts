@@ -176,6 +176,7 @@ export type SiteConfig = {
 		useJapaneseBadge?: boolean; // 使用日语假名标记（あいうえお...）代替数字
 	};
 	showCoverInContent: boolean; // 控制文章封面在文章内容页显示的开关
+	defaultCovers?: string[]; // 默认文章封面图列表（当文章未设置封面时随机选用）
 	generateOgImages: boolean;
 	favicon: Favicon[];
 	showLastModified: boolean; // 控制“上次编辑”卡片显示的开关

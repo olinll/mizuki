@@ -32,4 +32,3 @@ export const collections = {
 	posts: postsCollection,
 	assets: assetsCollection,
 };
-

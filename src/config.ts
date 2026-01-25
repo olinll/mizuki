@@ -109,20 +109,22 @@ export const siteConfig: SiteConfig = {
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
 			desktop: [
-				"/assets/desktop-banner/1.webp",
-				"/assets/desktop-banner/2.webp",
-				"/assets/desktop-banner/3.webp",
-				"/assets/desktop-banner/4.webp",
-				"/assets/desktop-banner/5.webp",
-				"/assets/desktop-banner/6.webp",
+				"https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302",
+				// "/assets/desktop-banner/1.webp",
+				// "/assets/desktop-banner/2.webp",
+				// "/assets/desktop-banner/3.webp",
+				// "/assets/desktop-banner/4.webp",
+				// "/assets/desktop-banner/5.webp",
+				// "/assets/desktop-banner/6.webp",
 			], // 桌面横幅图片
 			mobile: [
-				"/assets/mobile-banner/1.webp",
-				"/assets/mobile-banner/2.webp",
-				"/assets/mobile-banner/3.webp",
-				"/assets/mobile-banner/4.webp",
-				"/assets/mobile-banner/5.webp",
-				"/assets/mobile-banner/6.webp",
+				"https://v2.xxapi.cn/api/randomAcgPic?type=wap&return=302",
+				// "/assets/mobile-banner/1.webp",
+				// "/assets/mobile-banner/2.webp",
+				// "/assets/mobile-banner/3.webp",
+				// "/assets/mobile-banner/4.webp",
+				// "/assets/mobile-banner/5.webp",
+				// "/assets/mobile-banner/6.webp",
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
@@ -186,6 +188,15 @@ export const siteConfig: SiteConfig = {
 		useJapaneseBadge: false, // 使用日语假名标记（あいうえお...）代替数字，开启后会将 1、2、3... 改为 あ、い、う...
 	},
 	showCoverInContent: true, // 在文章内容页显示文章封面
+	defaultCovers: [
+		"https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302",
+		// "/assets/desktop-banner/1.webp",
+		// "/assets/desktop-banner/2.webp",
+		// "/assets/desktop-banner/3.webp",
+		// "/assets/desktop-banner/4.webp",
+		// "/assets/desktop-banner/5.webp",
+		// "/assets/desktop-banner/6.webp",
+	], // 默认文章封面图列表（当文章未设置封面时随机选用）
 	generateOgImages: true, // 启用生成OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启
 	favicon: [
 		// 留空以使用默认 favicon
@@ -221,20 +232,22 @@ export const siteConfig: SiteConfig = {
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	src: {
 		desktop: [
-			"/assets/desktop-banner/1.webp",
-			"/assets/desktop-banner/2.webp",
-			"/assets/desktop-banner/3.webp",
-			"/assets/desktop-banner/4.webp",
-			"/assets/desktop-banner/5.webp",
-			"/assets/desktop-banner/6.webp",
+			"https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302",
+			// "/assets/desktop-banner/1.webp",
+			// "/assets/desktop-banner/2.webp",
+			// "/assets/desktop-banner/3.webp",
+			// "/assets/desktop-banner/4.webp",
+			// "/assets/desktop-banner/5.webp",
+			// "/assets/desktop-banner/6.webp",
 		], // 桌面横幅图片
 		mobile: [
-			"/assets/mobile-banner/1.webp",
-			"/assets/mobile-banner/2.webp",
-			"/assets/mobile-banner/3.webp",
-			"/assets/mobile-banner/4.webp",
-			"/assets/mobile-banner/5.webp",
-			"/assets/mobile-banner/6.webp",
+			"https://v2.xxapi.cn/api/randomAcgPic?type=wap&return=302",
+			// "/assets/mobile-banner/1.webp",
+			// "/assets/mobile-banner/2.webp",
+			// "/assets/mobile-banner/3.webp",
+			// "/assets/mobile-banner/4.webp",
+			// "/assets/mobile-banner/5.webp",
+			// "/assets/mobile-banner/6.webp",
 		], // 移动横幅图片
 	}, // 使用本地横幅图片
 	position: "center", // 壁纸位置，等同于 object-position

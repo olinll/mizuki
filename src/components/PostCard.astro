@@ -9,6 +9,7 @@ import { formatDateToYYYYMMDD } from "../utils/date-utils";
 import { i18n } from "../i18n/translation";
 import ImageWrapper from "./misc/ImageWrapper.astro";
 import PostMetadata from "./PostMeta.astro";
+import { getPostCover } from "@utils/cover-utils";
 
 interface Props {
 	class?: string;
@@ -31,7 +32,8 @@ const {
 } = entry.data;
 
 const url = getPostUrl(entry);
-const hasCover = image !== undefined && image !== null && image !== "";
+const coverImage = getPostCover(image, entry.id);
+const hasCover = coverImage !== undefined && coverImage !== null && coverImage !== "";
 const coverWidth = "28%";
 
 const { remarkPluginFrontmatter } = await render(entry);
@@ -174,7 +176,7 @@ const { remarkPluginFrontmatter } = await render(entry);
 					/>
 				</div>
 				<ImageWrapper
-					src={image}
+					src={coverImage}
 					basePath={getFileDirFromPath(entry.filePath || "")}
 					alt="Cover Image of the Post"
 					class="w-full h-full"
