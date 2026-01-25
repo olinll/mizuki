@@ -1,8 +1,8 @@
 ---
 title: Centos系统安装优化 一篇文章讲明白
 description: Centos停止维护，整理了下Centos系统的各类教程
-published: 2026-01-25
-date: 2026-01-25
+published: 2026-01-01
+date: 2026-01-01
 tags:
   - Centos
 category: 教程
