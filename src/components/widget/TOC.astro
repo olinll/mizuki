@@ -124,16 +124,25 @@ class TableOfContents extends HTMLElement {
 
         const topmost = activeHeading[0];
         const bottommost = activeHeading[activeHeading.length - 1];
-        const tocHeight = this.tocEl.clientHeight;
+
+        // Use wrapper for scrolling if available
+        const wrapper = document.getElementById('toc-inner-wrapper');
+        const scrollEl = (wrapper && wrapper.scrollHeight > wrapper.clientHeight) ? wrapper : this.tocEl;
+
+        const tocHeight = scrollEl.clientHeight;
+
+        // Calculate top relative to scrollEl
+        const scrollElRect = scrollEl.getBoundingClientRect();
+        const currentTop = topmost.getBoundingClientRect().top - scrollElRect.top + scrollEl.scrollTop;
+        const currentBottom = bottommost.getBoundingClientRect().bottom - scrollElRect.top + scrollEl.scrollTop;
 
         let top: number;
-        if (bottommost.getBoundingClientRect().bottom -
-            topmost.getBoundingClientRect().top < 0.9 * tocHeight)
-            top = topmost.offsetTop - 32;
+        if (currentBottom - currentTop < 0.9 * tocHeight)
+            top = currentTop - 32;
         else
-            top = bottommost.offsetTop - tocHeight * 0.8;
+            top = currentBottom - tocHeight * 0.8;
 
-        this.tocEl.scrollTo({
+        scrollEl.scrollTo({
             top,
             left: 0,
             behavior: "smooth",
