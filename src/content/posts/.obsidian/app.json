@@ -6,5 +6,6 @@
   "newLinkFormat": "relative",
   "useMarkdownLinks": true,
   "focusNewTab": true,
-  "promptDelete": true
+  "promptDelete": true,
+  "strictLineBreaks": true
 }

@@ -11,10 +11,14 @@
             "id": "7e62fcdd533d2b01",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "centos-all.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "centos-all"
             }
           }
         ]
@@ -152,12 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "centos-all.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "centos-all 的大纲"
             }
           }
         ],
@@ -180,9 +185,16 @@
   },
   "active": "7e62fcdd533d2b01",
   "lastOpenFiles": [
-    "mizuki-changelog.md",
-    "nginx-subfilter-html.md",
+    "img/centos-all-486866.png",
+    "img/centos-all-276712.png",
+    "img/centos-all-165709.png",
+    "img/centos-all-433874.png",
     "mizuki-started.md",
+    "linux-beszel-install.md",
+    "mizuki-changelog.md",
+    "centos-all.md",
+    "docker-harbor-install.md",
+    "nginx-subfilter-html.md",
     "eo-cdn-use.md",
     "basicauth-nopass.md",
     "alpine-install.md",
@@ -196,15 +208,10 @@
     "uptime-kuma-install.md",
     "ubuntu-install.md",
     "pgsql-install.md",
-    "linux-beszel-install.md",
     "2026-01-21.md",
     "docker-install.md",
-    "docker-harbor-install.md",
     "img/alpine-install-481683.png",
     "img/alpine-install-134291.png",
-    "img/alpine-install-878387.png",
-    "img/alpine-install-951987.png",
-    "img/linux-beszel-install-928607.png",
     "eo-use-website.md",
     "img",
     "img/edge-fndocker",
