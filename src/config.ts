@@ -26,7 +26,7 @@ export const siteConfig: SiteConfig = {
 	title: "Olinl Blog",
 	subtitle: "技术分享",
 	siteURL: "https://m.olinl.com/", // 请替换为你的站点URL，以斜杠结尾
-	siteStartDate: "2026-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
+	siteStartDate: "2024-12-31", // 站点开始运行日期，用于站点统计组件计算运行天数
 
 	timeZone: SITE_TIMEZONE,
 
@@ -214,18 +214,33 @@ export const siteConfig: SiteConfig = {
 		asciiFont: {
 			// 英文字体 - 优先级最高
 			// 指定为英文字体则无论字体包含多大范围，都只会保留 ASCII 字符子集
-			fontFamily: "ZenMaruGothic-Medium",
+			fontFamily: "LXGWWenKai-Medium",
 			fontWeight: "400",
-			localFonts: ["ZenMaruGothic-Medium.ttf"],
+			localFonts: ["LXGWWenKai-Medium.ttf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 		cjkFont: {
 			// 中日韩字体 - 作为回退字体
-			fontFamily: "萝莉体 第二版",
-			fontWeight: "500",
-			localFonts: ["萝莉体 第二版.ttf"],
+			fontFamily: "LXGWWenKai-Medium",
+			fontWeight: "400",
+			localFonts: ["LXGWWenKai-Medium.ttf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
+		// asciiFont: {
+		// 	// 英文字体 - 优先级最高
+		// 	// 指定为英文字体则无论字体包含多大范围，都只会保留 ASCII 字符子集
+		// 	fontFamily: "ZenMaruGothic-Medium",
+		// 	fontWeight: "400",
+		// 	localFonts: ["ZenMaruGothic-Medium.ttf"],
+		// 	enableCompress: true, // 启用字体子集优化，减少字体文件大小
+		// },
+		// cjkFont: {
+		// 	// 中日韩字体 - 作为回退字体
+		// 	fontFamily: "萝莉体 第二版",
+		// 	fontWeight: "500",
+		// 	localFonts: ["萝莉体 第二版.ttf"],
+		// 	enableCompress: true, // 启用字体子集优化，减少字体文件大小
+		// },
 	},
 	showLastModified: false, // 控制“上次编辑”卡片显示的开关
 };
