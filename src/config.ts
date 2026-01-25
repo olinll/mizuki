@@ -109,7 +109,8 @@ export const siteConfig: SiteConfig = {
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
 			desktop: [
-				"https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302",
+				// "https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302", //小小api
+				"https://eopfapi.olinl.com/pic?img=h",
 				// "/assets/desktop-banner/1.webp",
 				// "/assets/desktop-banner/2.webp",
 				// "/assets/desktop-banner/3.webp",
@@ -118,7 +119,8 @@ export const siteConfig: SiteConfig = {
 				// "/assets/desktop-banner/6.webp",
 			], // 桌面横幅图片
 			mobile: [
-				"https://v2.xxapi.cn/api/randomAcgPic?type=wap&return=302",
+				// "https://v2.xxapi.cn/api/randomAcgPic?type=wap&return=302", //小小api
+				"https://eopfapi.olinl.com/pic?img=v",
 				// "/assets/mobile-banner/1.webp",
 				// "/assets/mobile-banner/2.webp",
 				// "/assets/mobile-banner/3.webp",
@@ -189,7 +191,8 @@ export const siteConfig: SiteConfig = {
 	},
 	showCoverInContent: true, // 在文章内容页显示文章封面
 	defaultCovers: [
-		"https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302",
+		"https://eopfapi.olinl.com/pic?img=h",
+		// "https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302",
 		// "/assets/desktop-banner/1.webp",
 		// "/assets/desktop-banner/2.webp",
 		// "/assets/desktop-banner/3.webp",
@@ -247,7 +250,8 @@ export const siteConfig: SiteConfig = {
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	src: {
 		desktop: [
-			"https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302",
+			"https://eopfapi.olinl.com/pic?img=h",
+			// "https://v2.xxapi.cn/api/randomAcgPic?type=pc&return=302",
 			// "/assets/desktop-banner/1.webp",
 			// "/assets/desktop-banner/2.webp",
 			// "/assets/desktop-banner/3.webp",
@@ -256,7 +260,8 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 			// "/assets/desktop-banner/6.webp",
 		], // 桌面横幅图片
 		mobile: [
-			"https://v2.xxapi.cn/api/randomAcgPic?type=wap&return=302",
+			"https://eopfapi.olinl.com/pic?img=v",
+			// "https://v2.xxapi.cn/api/randomAcgPic?type=wap&return=302",
 			// "/assets/mobile-banner/1.webp",
 			// "/assets/mobile-banner/2.webp",
 			// "/assets/mobile-banner/3.webp",
