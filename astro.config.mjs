@@ -34,7 +34,13 @@ export default defineConfig({
 	trailingSlash: "always",
 
 	output: "static",
-
+	//重定向配置
+	redirects: {
+		"/xr": {
+			status: 302,
+			destination: "https://blog.olinl.com/self/random.html",
+		},
+	},
 	integrations: [
 		tailwind({
 			nesting: true,
