@@ -28,4 +28,40 @@ MinIO 支持基于 JSON 的存储桶策略，您可以配置这些策略来严�
 }
 ```
 
+
+我们可以配置自定义的策略，公共读，不允许写入删除等操作
+```json
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::your-bucket-name/*"
+      ]
+    },
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": [
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "s3:PutBucketPolicy",
+        "s3:DeleteBucketPolicy"
+      ],
+      "Resource": [
+        "arn:aws:s3:::your-bucket-name",
+        "arn:aws:s3:::your-bucket-name/*"
+      ]
+    }
+  ]
+}
+
+```
+
 将 your-bucket-name 替换为您实际的存储桶名称。这个策略会阻止任何人列出该存储桶的内容，除非他们有显式权限。
